@@ -32,12 +32,12 @@ jobs:
         run: |
           # update gh-pages
           git clone https://github.com/Kirby97/Test.git
-          cp test.pac Test/Test/.
+          cp -rf test.pac Test/Test/.
           # push to gh-pages
           cd Test/
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add .
           git commit -m "$(date '+%Y-%m-%d %H:%M:%S')"
-          git push https://${{ github.repository_owner }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git Test
+          git push https://${{ github.repository_owner }}:${{ secrets.RELEASE_TOKEN }}@github.com/${{ github.repository }}.git
    
