@@ -25,7 +25,8 @@ jobs:
               mv whitelist.pac test.pac
               
       - name: Release apk
-        uses: ncipollo/release-action@v1.5.0
-        with:
-          artifacts: "test.pac"
-          token: ${{ secrets.RELEASE_TOKEN }}
+        uses: dev-drprasad/delete-older-releases@v0.1.0
+        with:    
+              keep_latest: 1
+        env:
+            GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
