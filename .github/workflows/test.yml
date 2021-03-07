@@ -4,7 +4,6 @@
 name: Test
 
 on:
-  workflow_dispatch:
   push:
     branches: [ master ]
     tags:
@@ -27,5 +26,5 @@ jobs:
       - name: Release apk
         uses: ncipollo/release-action@v1.5.0
         with:
-          artifacts: "test/test.pac"
+          artifacts: "test.pac"
           token: ${{ secrets.RELEASE_TOKEN }}
