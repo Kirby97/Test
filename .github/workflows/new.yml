@@ -31,7 +31,7 @@ jobs:
         #if: github.event_name == 'schedule'
         run: |
           # update gh-pages
-          git clone https://github.com/Kirby97/Test.git
+          #git clone https://github.com/Kirby97/Test.git
           cp -rf test.pac Test/Test/.
           # push to gh-pages
           cd Test/
