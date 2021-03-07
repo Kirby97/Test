@@ -19,7 +19,10 @@ jobs:
               wget https://raw.githubusercontent.com/pexcn/daily/gh-pages/pac/whitelist.pac
               sed -i 's/127.0.0.1:1080/127.0.0.1:7890/' whitelist.pac
               mv whitelist.pac test.pac
-
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -27,7 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
           tag_name: test
-          release_name: $(date +'%Y-%m-%d')
+          release_name: ${{ steps.date.outputs.date }}
           draft: false
           prerelease: false
         
