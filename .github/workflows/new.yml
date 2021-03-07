@@ -28,7 +28,7 @@ jobs:
               mv whitelist.pac test.pac
               
       - name: Deploy
-        if: github.event_name == 'schedule'
+        #if: github.event_name == 'schedule'
         run: |
           # update gh-pages
           git clone https://github.com/Kirby97/Test.git
