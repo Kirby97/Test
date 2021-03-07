@@ -19,16 +19,27 @@ jobs:
               wget https://raw.githubusercontent.com/pexcn/daily/gh-pages/pac/whitelist.pac
               sed -i 's/127.0.0.1:1080/127.0.0.1:7890/' whitelist.pac
               mv whitelist.pac test.pac
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+        
       - name: Get release
         id: get_release
         uses: bruceadams/get-release@v1.2.2
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-
               
       - name: Release apk
 
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
